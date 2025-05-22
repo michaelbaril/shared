@@ -10,8 +10,8 @@ jobs:
         run: mkdir doc
       - name: 
         run: |
-          sed -i "s/{title}/${{ env.TITLE }}/g" markdown-to-html.json
-          sed -i "s/{favicon}/${{ env.EMOJI }}/g" markdown-to-html.json
+          sed -i "s/{title}/${{ vars.TITLE }}/g" markdown-to-html.json
+          sed -i "s/{favicon}/${{ vars.EMOJI }}/g" markdown-to-html.json
           sed -i "s/{repo}/${{ github.repository }}/g" markdown-to-html.json
       - name: Generate index page
         uses: jaywcjlove/markdown-to-html-cli@main
