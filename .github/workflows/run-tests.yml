@@ -1,4 +1,3 @@
-name: "Run tests"
 on:
   workflow_call:
     inputs:
@@ -31,7 +30,7 @@ on:
         required: false
 jobs:
   tests:
-    name: "Run tests"
+    name: Run tests
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: ./docker-compose.yml
@@ -63,7 +62,7 @@ jobs:
       - name: Start database container
         run: docker compose up -d --wait database
       - name: Run tests
-        run: ./vendor/bin/phpunit ${{ inputs.phpunit-options }} ${{ inputs.with-coverage && '--coverage-html coverage --coverage-php coverage/coverage.php --coverage-clover coverage/clover.xml --coverage-cobertura coverage/cobertura.xml' || '' }}
+        run: ./vendor/bin/phpunit ${{ inputs.phpunit-options }} ${{ inputs.with-coverage && '--coverage-html coverage --coverage-php coverage/coverage.php --coverage-clover coverage/clover.xml' || '' }}
       - name: Upload artifacts
         if: ${{ inputs.artifact-name }}
         uses: actions/upload-artifact@v4

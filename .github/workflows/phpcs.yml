@@ -1,8 +1,7 @@
-name: "PHP Code Sniffer"
 on: workflow_call
 jobs:
   phpcs:
-    name: "PHP Code Sniffer"
+    name: Run PHP Code Sniffer
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,5 +16,5 @@ jobs:
       - name: Install dependencies
         run: |
           composer update --no-interaction      
-      - name: PHP Code Sniffer
+      - name: Run PHP Code Sniffer
         run: ./vendor/bin/phpcs -q --report=checkstyle --standard=./phpcs.xml src ${{ github.event_name == 'pull_request' && '| cs2pr' || '' }}

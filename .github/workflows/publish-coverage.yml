@@ -1,9 +1,8 @@
-name: "Publish coverage"
 on: workflow_call
 jobs:
   generate-badge:
-    runs-on: ubuntu-latest
     name: Generate badge
+    runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -26,9 +25,9 @@ jobs:
           name: coverage
           path: coverage
   publish:
+    name: Publish coverage
     needs: generate-badge
     runs-on: ubuntu-latest
-    name: Publish to GH pages
     concurrency:
       group: publish-gh-pages
     steps:

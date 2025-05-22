@@ -1,8 +1,7 @@
-name: "PHPStan"
 on: workflow_call
 jobs:
   phpstan:
-    name: "PHPStan"
+    name: Run PHPStan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,5 +16,5 @@ jobs:
       - name: Install dependencies
         run: |
           composer update --no-interaction      
-      - name: PHPStan
+      - name: Run PHPStan
         run: ./vendor/bin/phpstan analyse --configuration=./phpstan.neon --error-format=checkstyle src | cs2pr
