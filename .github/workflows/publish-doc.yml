@@ -8,11 +8,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Create output folder
         run: mkdir doc
-      - name: 
+      - name: Prepare markdown to HTML conversion
         run: |
           sed -i "s/{title}/${{ vars.TITLE }}/g" markdown-to-html.json
           sed -i "s/{favicon}/${{ vars.EMOJI }}/g" markdown-to-html.json
-          sed -i "s/{repo}/${{ github.repository }}/g" markdown-to-html.json
+          sed -i "s%{repo}%${{ github.repository }}%g" markdown-to-html.json
       - name: Generate index page
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
