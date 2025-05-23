@@ -64,7 +64,7 @@ jobs:
       - name: Run tests
         run: ./vendor/bin/phpunit ${{ inputs.phpunit-options }} ${{ inputs.with-coverage && '--coverage-html coverage --coverage-php coverage/coverage.php --coverage-clover coverage/clover.xml' || '' }}
       - name: Upload artifacts
-        if: ${{ inputs.artifact-name }}
+        if: ${{ inputs.with-coverage }}
         uses: actions/upload-artifact@v4
         with:
           name: coverage${{ inputs.artifact-name }}

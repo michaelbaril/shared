@@ -24,6 +24,7 @@ jobs:
         with:
           name: coverage
           path: coverage
+          overwrite: true
   publish:
     name: Publish coverage
     needs: generate-badge
