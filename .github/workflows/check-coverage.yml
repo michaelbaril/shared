@@ -19,9 +19,13 @@ jobs:
         with:
           name: coverage
           path: coverage
+      - name: List artifact contents
+        run: |
+          ls -lR coverage
+          cat coverage/clover.xml || echo "clover.xml not found"
       - name: Show coverage report
         uses: sergiy-decima/clover-coverage-action@1.0.0
         with:
           filename: coverage/clover.xml
           thresholds: ${{ inputs.threshold-low }} ${{ inputs.threshold-high }}
-          fail_if_low: false
+          fail_if_low: true
