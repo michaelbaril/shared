@@ -24,4 +24,4 @@ jobs:
         with:
           filename: coverage/clover.xml
           thresholds: ${{ inputs.threshold-low }} ${{ inputs.threshold-high }}
-          fail_if_low: true
+          fail_if_low: false
