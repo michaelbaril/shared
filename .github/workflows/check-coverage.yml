@@ -19,6 +19,11 @@ jobs:
         with:
           name: coverage
           path: coverage
+      # Needed because of bug in clover-coverage-action:
+      - name: Remove <package>s from clover.xml
+        run: |
+          sed -i -E "s/<package[^>]*>//g" clover.xml
+          sed -i "s/<\/package>//g" clover.xml
       - name: Show coverage report
         uses: sergiy-decima/clover-coverage-action@1.0.0
         with:
