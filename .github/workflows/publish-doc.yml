@@ -12,7 +12,7 @@ jobs:
         run: |
           sed -i "s/{title}/${{ vars.TITLE }}/g" markdown-to-html.json
           sed -i "s/{favicon}/${{ vars.EMOJI }}/g" markdown-to-html.json
-          sed -i "s%{repo}%"https://github.com/${{ github.repository }}%g" markdown-to-html.json
+          sed -i "s%{repo}%https://github.com/${{ github.repository }}%g" markdown-to-html.json
       - name: Generate index page
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
