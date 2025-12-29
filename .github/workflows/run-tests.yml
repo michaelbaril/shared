@@ -58,7 +58,7 @@ jobs:
       - name: Setup .env
         run: sed -i -E "s/^DB_HOST=.*$/DB_HOST=127.0.0.1/g" .env.test
       - name: Install dependencies
-        run: composer update --no-interaction ${{ inputs.composer-options }}
+        run: composer update --no-security-blocking --no-interaction ${{ inputs.composer-options }}
       - name: Start database container
         run: docker compose up -d --wait database
       - name: Run tests
